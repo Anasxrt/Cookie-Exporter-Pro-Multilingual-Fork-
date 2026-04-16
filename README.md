@@ -30,20 +30,31 @@
 
 ## 🚀 Installation
 
-### Firefox (Temporary)
+### Download Release
+
+Download the latest version from the [GitHub Releases](https://github.com/Anasxrt/Cookie-Exporter-Pro-Multilingual-Fork-/releases/tag/v1.3.0):
+
+- **Firefox:** `cookie-exporter-pro-firefox-v1.3.zip` → Extract to get `.xpi` file
+- **Chrome:** `cookie-exporter-pro-chrome-v1.3.zip` → Extract to get folder
+
+### Firefox (Permanent)
+1. Download `cookie-exporter-pro-firefox-v1.3.zip` from [releases](https://github.com/Anasxrt/Cookie-Exporter-Pro-Multilingual-Fork-/releases/tag/v1.3.0)
+2. Rename the extracted file from `.zip` to `.xpi`
+3. Open `about:addons` → "Extensions"
+4. Click the gear icon → "Install Add-on From File"
+5. Select the `.xpi` file
+
+### Firefox (Temporary - for testing)
 1. Open `about:debugging`
 2. Click "This Firefox" → "Load Temporary Add-on"
 3. Select any file in the `firefox/` folder
 
-### Firefox (Permanent)
-1. Pack the `firefox/` folder as a `.xpi` file
-2. Open `about:addons` → "Extensions"
-3. Click the gear icon → "Install Add-on From File"
-
 ### Chrome
-1. Open `chrome://extensions`
-2. Enable "Developer mode"
-3. Click "Load unpacked" and select `chrome/` folder
+1. Download `cookie-exporter-pro-chrome-v1.3.zip` from [releases](https://github.com/Anasxrt/Cookie-Exporter-Pro-Multilingual-Fork-/releases/tag/v1.3.0)
+2. Extract the zip file
+3. Open `chrome://extensions`
+4. Enable "Developer mode"
+5. Click "Load unpacked" and select the extracted `chrome/` folder
 
 ## 📖 Usage
 
