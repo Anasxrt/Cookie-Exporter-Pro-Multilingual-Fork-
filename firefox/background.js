@@ -5,6 +5,8 @@
 
 'use strict';
 
+console.log('[CookieExporterPro] Background script loaded');
+
 // ============================================================================
 // CONSTANTS & CONFIGURATION
 // ============================================================================
@@ -321,11 +323,17 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
   
   switch (request.action) {
     case 'getCookies':
-      handleGetCookies(request, sendResponse);
+      handleGetCookies(request, sendResponse).catch(err => {
+        console.error('[CookieExporterPro] getCookies error:', err);
+        sendResponse({ success: false, error: err.message });
+      });
       return true;
       
     case 'saveToFile':
-      handleSaveToFile(request, sendResponse);
+      handleSaveToFile(request, sendResponse).catch(err => {
+        console.error('[CookieExporterPro] saveToFile error:', err);
+        sendResponse({ success: false, error: err.message });
+      });
       return true;
       
     case 'updateAutoSettings':
@@ -333,11 +341,17 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
       return true;
       
     case 'autoExport':
-      performAutoExport().then(sendResponse);
+      performAutoExport().then(sendResponse).catch(err => {
+        console.error('[CookieExporterPro] autoExport error:', err);
+        sendResponse({ success: false, error: err.message });
+      });
       return true;
       
     case 'importCookies':
-      handleImportCookies(request, sendResponse);
+      handleImportCookies(request, sendResponse).catch(err => {
+        console.error('[CookieExporterPro] importCookies error:', err);
+        sendResponse({ success: false, error: err.message });
+      });
       return true;
       
     default:

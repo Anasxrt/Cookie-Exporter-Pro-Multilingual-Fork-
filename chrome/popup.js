@@ -3,6 +3,8 @@
  * Optimized for security and performance
  */
 
+console.log('[CookieExporterPro] Popup script loaded');
+
 // ============================================================================
 // SECURITY: API Compatibility Wrapper (defensive coding)
 // ============================================================================
@@ -457,12 +459,24 @@ async function quickGetAndCopy() {
     
     const format = elements.quickFormat?.value || 'json';
     
-    const response = await API.runtime.sendMessage({
-      action: 'getCookies',
-      filter: filter,
-      cookieType: 'all',
-      format: format
-    });
+    let response;
+    try {
+      response = await API.runtime.sendMessage({
+        action: 'getCookies',
+        filter: filter,
+        cookieType: 'all',
+        format: format
+      });
+    } catch (err) {
+      console.error('[CookieExporterPro] Message error:', err);
+      showStatus('Error: ' + err.message, 'error');
+      return;
+    }
+    
+    if (!response) {
+      showStatus('Error: No response from background', 'error');
+      return;
+    }
     
     if (response?.success) {
       currentCookies = response.cookies || [];
@@ -547,11 +561,18 @@ async function importFromClipboard() {
     }
     
     const mode = elements.importMode?.value || 'merge';
-    const result = await API.runtime.sendMessage({
-      action: 'importCookies',
-      cookies: cookies,
-      mode: mode
-    });
+    let result;
+    try {
+      result = await API.runtime.sendMessage({
+        action: 'importCookies',
+        cookies: cookies,
+        mode: mode
+      });
+    } catch (err) {
+      console.error('Message send error:', err);
+      showStatus('Error: Background script not responding. Try reloading extension.', 'error');
+      return;
+    }
     
     if (result?.success) {
       showStatus(i18n('status_imported', [cookies.length]), 'success');
@@ -677,12 +698,24 @@ async function handleGetCookies() {
     
     const format = DOM.query('input[name="exportFormat"]:checked')?.value || 'json';
     
-    const response = await API.runtime.sendMessage({
-      action: 'getCookies',
-      filter: filter,
-      cookieType: elements.cookieType?.value || 'all',
-      format: format
-    });
+    let response;
+    try {
+      response = await API.runtime.sendMessage({
+        action: 'getCookies',
+        filter: filter,
+        cookieType: elements.cookieType?.value || 'all',
+        format: format
+      });
+    } catch (err) {
+      console.error('[CookieExporterPro] getCookies error:', err);
+      showStatus('Error: ' + err.message, 'error');
+      return;
+    }
+    
+    if (!response) {
+      showStatus('Error: No response from background', 'error');
+      return;
+    }
     
     if (response?.success) {
       currentCookies = response.cookies || [];
@@ -711,12 +744,18 @@ async function handleSaveToFile() {
     const filename = generateFilename();
     const content = elements.resultText?.value || '';
     
-    await API.runtime.sendMessage({
-      action: 'saveToFile',
-      filename: filename,
-      content: content,
-      format: currentFormat
-    });
+    try {
+      await API.runtime.sendMessage({
+        action: 'saveToFile',
+        filename: filename,
+        content: content,
+        format: currentFormat
+      });
+    } catch (err) {
+      console.error('[CookieExporterPro] saveToFile error:', err);
+      showStatus('Error: ' + err.message, 'error');
+      return;
+    }
     
     showStatus(i18n('status_fileSaved', [filename]), 'success');
   } catch (error) {
