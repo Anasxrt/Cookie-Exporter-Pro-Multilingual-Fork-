@@ -6,7 +6,7 @@
   "description": "Export cookies with format selection and automation - Multilingual (EN/RU/TH)",
   "short_name": "Cookie Export",
   "author": "Cookie Exporter Pro+ Contributors",
-  "homepage_url": "https://github.com/cookie-exporter-pro",
+  "homepage_url": "https://github.com/Anasxrt/Cookie-Exporter-Pro-Multilingual-Fork-",
   "permissions": [
     "cookies",
     "storage",

@@ -394,21 +394,43 @@ function parseNetscapeCookies(text) {
 
 function parseCurlCookies(text) {
   const cookies = [];
-  // Extract cookie from --cookie "name=value" or -b "name=value"
-  const regex = /(?:--cookie|-b)\s+["']?([^"'=\s]+)=([^"';\s]+)["']?/g;
+  
+  // Handle --cookie "name=value; name2=value2" format
+  const cookieStringRegex = /--cookie\s+["']([^"']+)["']/g;
   let match;
   
-  while ((match = regex.exec(text)) !== null) {
+  while ((match = cookieStringRegex.exec(text)) !== null) {
+    const pairs = match[1].split(';').map(s => s.trim());
+    for (const pair of pairs) {
+      const [name, ...valueParts] = pair.split('=');
+      if (name && valueParts.length > 0) {
+        cookies.push({
+          domain: '',
+          httpOnly: false,
+          path: '/',
+          secure: false,
+          expirationDate: null,
+          name: name.trim(),
+          value: valueParts.join('=').trim()
+        });
+      }
+    }
+  }
+  
+  // Handle -b "name=value" or -b name=value format
+  const bareRegex = /-b\s+(["']?)([^"'=\s]+)=([^"';\s]+)\1/g;
+  while ((match = bareRegex.exec(text)) !== null) {
     cookies.push({
       domain: '',
       httpOnly: false,
       path: '/',
       secure: false,
       expirationDate: null,
-      name: match[1],
-      value: match[2]
+      name: match[2],
+      value: match[3]
     });
   }
+  
   return cookies;
 }
 

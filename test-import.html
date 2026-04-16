@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cookie Import Test</title>
+  <style>
+    body { font-family: monospace; padding: 20px; max-width: 800px; margin: 0 auto; }
+    .test { margin: 20px 0; padding: 10px; border: 1px solid #ccc; }
+    .pass { background: #d4edda; border-color: #28a745; }
+    .fail { background: #f8d7da; border-color: #dc3545; }
+    pre { background: #f5f5f5; padding: 10px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>🧪 Cookie Import Test Suite</h1>
+  <div id="results"></div>
+
+  <script>
+// ===== COPY THESE FUNCTIONS FROM popup.js =====
+
+function detectFormat(text) {
+  if (!text || typeof text !== 'string') return null;
+  const trimmed = text.trim();
+  
+  if (trimmed.startsWith('[') || trimmed.startsWith('{')) {
+    try { JSON.parse(trimmed); return 'json'; } catch (e) {}
+  }
+  
+  if (trimmed.includes('# Netscape HTTP Cookie File') || 
+      trimmed.includes('# HTTP Cookie File')) {
+    return 'netscape';
+  }
+  
+  if (trimmed.includes('curl') && 
+      (trimmed.includes('--cookie') || trimmed.includes('-b '))) {
+    return 'curl';
+  }
+  
+  return null;
+}
+
+function parseCookies(text, format) {
+  try {
+    switch (format) {
+      case 'json':
+        const data = JSON.parse(text);
+        return Array.isArray(data) ? data : (data.cookies || []);
+      case 'netscape':
+        return parseNetscapeCookies(text);
+      case 'curl':
+        return parseCurlCookies(text);
+      default:
+        return [];
+    }
+  } catch (e) {
+    console.error('Parse error:', e);
+    return [];
+  }
+}
+
+function parseNetscapeCookies(text) {
+  const cookies = [];
+  const lines = text.split('\n');
+  
+  for (const line of lines) {
+    if (line.startsWith('#') || !line.trim()) continue;
+    
+    const parts = line.split('\t');
+    if (parts.length >= 7) {
+      cookies.push({
+        domain: parts[0],
+        httpOnly: parts[1] === 'TRUE',
+        path: parts[2],
+        secure: parts[3] === 'TRUE',
+        expirationDate: parseInt(parts[4], 10) || null,
+        name: parts[5],
+        value: parts[6]
+      });
+    }
+  }
+  return cookies;
+}
+
+function parseCurlCookies(text) {
+  const cookies = [];
+  
+  // Handle --cookie "name=value; name2=value2" format
+  const cookieStringRegex = /--cookie\s+["']([^"']+)["']/g;
+  let match;
+  
+  while ((match = cookieStringRegex.exec(text)) !== null) {
+    const pairs = match[1].split(';').map(s => s.trim());
+    for (const pair of pairs) {
+      const [name, ...valueParts] = pair.split('=');
+      if (name && valueParts.length > 0) {
+        cookies.push({
+          domain: '',
+          httpOnly: false,
+          path: '/',
+          secure: false,
+          expirationDate: null,
+          name: name.trim(),
+          value: valueParts.join('=').trim()
+        });
+      }
+    }
+  }
+  
+  // Handle -b "name=value" or -b name=value format
+  const bareRegex = /-b\s+(["']?)([^"'=\s]+)=([^"';\s]+)\1/g;
+  while ((match = bareRegex.exec(text)) !== null) {
+    cookies.push({
+      domain: '',
+      httpOnly: false,
+      path: '/',
+      secure: false,
+      expirationDate: null,
+      name: match[2],
+      value: match[3]
+    });
+  }
+  
+  return cookies;
+}
+
+// ===== TEST CASES =====
+
+function test(name, fn) {
+  const results = document.getElementById('results');
+  const div = document.createElement('div');
+  div.className = 'test';
+  
+  try {
+    const result = fn();
+    if (result) {
+      div.classList.add('pass');
+      div.innerHTML = `✅ PASS: ${name}`;
+    } else {
+      div.classList.add('fail');
+      div.innerHTML = `❌ FAIL: ${name}`;
+    }
+  } catch (e) {
+    div.classList.add('fail');
+    div.innerHTML = `❌ ERROR: ${name}<br><pre>${e.message}</pre>`;
+  }
+  
+  results.appendChild(div);
+}
+
+// Test 1: JSON Array Format
+test('JSON Array format detection', () => {
+  const text = '[{"name":"session","value":"abc123","domain":"example.com"}]';
+  return detectFormat(text) === 'json';
+});
+
+test('JSON Array parsing', () => {
+  const text = '[{"name":"session","value":"abc123","domain":"example.com"}]';
+  const cookies = parseCookies(text, 'json');
+  return cookies.length === 1 && cookies[0].name === 'session';
+});
+
+// Test 2: JSON Object with cookies key
+test('JSON Object {cookies: [...]} detection', () => {
+  const text = '{"cookies":[{"name":"test","value":"123"}]}';
+  return detectFormat(text) === 'json';
+});
+
+test('JSON Object parsing', () => {
+  const text = '{"cookies":[{"name":"test","value":"123"}]}';
+  const cookies = parseCookies(text, 'json');
+  return cookies.length === 1 && cookies[0].name === 'test';
+});
+
+// Test 3: Netscape Format
+test('Netscape format detection', () => {
+  const text = '# Netscape HTTP Cookie File\n.example.com\tTRUE\t/\tFALSE\t0\tsession\tabc';
+  return detectFormat(text) === 'netscape';
+});
+
+test('Netscape parsing', () => {
+  const text = '# Netscape HTTP Cookie File\n.example.com\tTRUE\t/\tFALSE\t0\tsession\tabc123';
+  const cookies = parseCookies(text, 'netscape');
+  return cookies.length === 1 && 
+         cookies[0].domain === '.example.com' && 
+         cookies[0].name === 'session' &&
+         cookies[0].value === 'abc123';
+});
+
+// Test 4: cURL Format
+test('cURL format detection', () => {
+  const text = 'curl --cookie "session=abc123" https://example.com';
+  return detectFormat(text) === 'curl';
+});
+
+test('cURL parsing single cookie', () => {
+  const text = 'curl --cookie "session=abc123" https://example.com';
+  const cookies = parseCookies(text, 'curl');
+  return cookies.length === 1 && cookies[0].name === 'session' && cookies[0].value === 'abc123';
+});
+
+test('cURL parsing multiple cookies', () => {
+  const text = 'curl -b "a=1" --cookie "b=2; c=3" https://example.com';
+  const cookies = parseCookies(text, 'curl');
+  console.log('Parsed cookies:', cookies);
+  return cookies.length === 3 && 
+         cookies.some(c => c.name === 'a' && c.value === '1') &&
+         cookies.some(c => c.name === 'b' && c.value === '2') &&
+         cookies.some(c => c.name === 'c' && c.value === '3');
+});
+
+// Test 5: Edge cases
+test('Empty text returns null', () => {
+  return detectFormat('') === null && detectFormat('   ') === null;
+});
+
+test('Invalid JSON returns null', () => {
+  return detectFormat('{invalid json') === null;
+});
+
+test('Random text returns null', () => {
+  return detectFormat('hello world this is not a cookie') === null;
+});
+
+console.log('Tests completed. Check results above.');
+  </script>
+</body>
+</html>
