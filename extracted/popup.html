@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 450px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .header {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #333;
+    }
+    .section {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 8px;
+      background: #f9f9f9;
+    }
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+    label {
+      font-size: 13px;
+      color: #555;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+    .radio-group {
+      display: flex;
+      gap: 15px;
+      margin: 8px 0;
+    }
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: normal;
+    }
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 8px 0;
+    }
+    .button-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: bold;
+      transition: background-color 0.2s;
+    }
+    #getCookies {
+      background-color: #4CAF50;
+      color: white;
+      grid-column: span 2;
+    }
+    #saveSettings {
+      background-color: #2196F3;
+      color: white;
+    }
+    #resetSettings {
+      background-color: #f44336;
+      color: white;
+    }
+    .hidden {
+      display: none !important;
+    }
+    .status {
+      margin-top: 10px;
+      padding: 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      display: none;
+    }
+    .success {
+      background-color: #dff0d8;
+      color: #3c763d;
+      border: 1px solid #d6e9c6;
+    }
+    .error {
+      background-color: #f2dede;
+      color: #a94442;
+      border: 1px solid #ebccd1;
+    }
+    .info {
+      background-color: #d9edf7;
+      color: #31708f;
+      border: 1px solid #bce8f1;
+    }
+    .small-text {
+      font-size: 11px;
+      color: #777;
+      margin-top: 3px;
+    }
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 15px;
+    }
+    .tab {
+      padding: 8px 15px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-bottom: none;
+      border-radius: 4px 4px 0 0;
+    }
+    .tab.active {
+      background: #f0f0f0;
+      border-color: #ddd #ddd #f0f0f0;
+      font-weight: bold;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="tabs">
+      <div class="tab active" data-tab="manual" data-i18n="tab_manual">Ручной экспорт</div>
+      <div class="tab" data-tab="auto" data-i18n="tab_auto">Автоматизация</div>
+      <div class="tab" data-tab="settings" data-i18n="tab_settings">Настройки</div>
+    </div>
+    
+    <!-- Ручной экспорт -->
+    <div id="manual-tab" class="tab-content active">
+      <div class="header" data-i18n="header_manual">🔄 Ручной экспорт куки</div>
+      
+      <div class="input-group">
+        <label for="domainFilter" data-i18n="label_domainFilter">Фильтр домена (опционально):</label>
+        <input type="text" id="domainFilter" data-i18n-placeholder="placeholder_domainFilter" placeholder="example.com или оставьте пустым для всех">
+      </div>
+      
+      <div class="input-group">
+        <label for="cookieType" data-i18n="label_cookieType">Тип куки:</label>
+        <select id="cookieType">
+          <option value="all" data-i18n="option_allCookies">Все куки</option>
+          <option value="session" data-i18n="option_sessionOnly">Только сессионные</option>
+          <option value="persistent" data-i18n="option_persistentOnly">Только постоянные</option>
+        </select>
+      </div>
+      
+      <div class="input-group">
+        <label data-i18n="label_exportFormat">Формат экспорта:</label>
+        <div class="radio-group">
+          <label><input type="radio" name="exportFormat" value="json" checked> JSON</label>
+          <label><input type="radio" name="exportFormat" value="netscape"> Netscape Cookie File</label>
+        </div>
+        <div class="small-text" data-i18n="small_netscapeCompat">
+          Netscape формат совместим с wget, curl, aria2 и другими утилитами
+        </div>
+      </div>
+      
+      <div class="button-group">
+        <button id="getCookies" data-i18n="btn_getCookies">📥 Получить куки</button>
+        <button id="copyToClipboard" data-i18n="btn_copyToClipboard" disabled>📋 Копировать</button>
+        <button id="saveToFile" data-i18n="btn_saveToFile" disabled>💾 Сохранить файл</button>
+        <button id="sendToServer" data-i18n="btn_sendToServer" disabled>🌐 Отправить</button>
+      </div>
+      
+      <div id="resultArea" style="display: none;">
+        <label data-i18n="label_result">Результат:</label>
+        <textarea id="resultText" readonly rows="8"></textarea>
+        <div class="small-text" data-i18n="small_foundCookies">Найдено куки: <span id="cookieCount">0</span></div>
+      </div>
+    </div>
+    
+    <!-- Автоматизация -->
+    <div id="auto-tab" class="tab-content">
+      <div class="header" data-i18n="header_auto">🤖 Автоматический экспорт</div>
+      
+      <div class="checkbox-group">
+        <input type="checkbox" id="enableAutoExport">
+        <label for="enableAutoExport" data-i18n="label_enableAutoExport">Включить автоматический экспорт</label>
+      </div>
+      
+      <div id="autoSettings" class="hidden">
+        <div class="input-group">
+          <label data-i18n="label_trigger">Триггер:</label>
+          <select id="autoTrigger">
+            <option value="startup" data-i18n="option_startup">При запуске браузера</option>
+            <option value="browserClose" data-i18n="option_browserClose">При закрытии браузера</option>
+            <option value="schedule" data-i18n="option_schedule">По расписанию</option>
+            <option value="interval" data-i18n="option_interval">Каждые N минут</option>
+          </select>
+        </div>
+        
+        <div id="scheduleSettings" class="input-group hidden">
+          <label for="scheduleTime" data-i18n="label_scheduleTime">Время (каждый день):</label>
+          <input type="time" id="scheduleTime" value="09:00">
+        </div>
+        
+        <div id="intervalSettings" class="input-group hidden">
+          <label for="intervalMinutes" data-i18n="label_intervalMinutes">Интервал (минуты):</label>
+          <input type="number" id="intervalMinutes" min="1" max="1440" value="60">
+        </div>
+        
+        <div class="input-group">
+          <label data-i18n="label_action">Действие:</label>
+          <select id="autoAction">
+            <option value="save" data-i18n="option_saveFile">Сохранить в файл</option>
+            <option value="send" data-i18n="option_sendServer">Отправить на сервер</option>
+            <option value="both" data-i18n="option_saveAndSend">Сохранить и отправить</option>
+          </select>
+        </div>
+        
+        <div class="input-group">
+          <label data-i18n="label_format">Формат:</label>
+          <div class="radio-group">
+            <label><input type="radio" name="autoFormat" value="json" checked> JSON</label>
+            <label><input type="radio" name="autoFormat" value="netscape"> Netscape</label>
+          </div>
+        </div>
+        
+        <div id="serverSettings" class="input-group">
+          <label for="serverUrl" data-i18n="label_serverUrl">URL сервера:</label>
+          <input type="text" id="serverUrl" data-i18n-placeholder="placeholder_serverUrl" placeholder="http://localhost:3000/cookies">
+        </div>
+        
+        <div class="input-group">
+          <label for="autoDomainFilter" data-i18n="label_autoDomainFilter">Фильтр домена (авто):</label>
+          <input type="text" id="autoDomainFilter" data-i18n-placeholder="placeholder_autoDomainFilter" placeholder="Оставьте пустым для всех">
+        </div>
+        
+        <div class="button-group">
+          <button id="saveAutoSettings" data-i18n="btn_saveAutoSettings">💾 Сохранить настройки</button>
+          <button id="testAutoExport" data-i18n="btn_testAutoExport">🧪 Тестовый запуск</button>
+        </div>
+        
+        <div class="small-text">
+          <span data-i18n="small_status">Статус:</span> <span id="autoStatus">Не активно</span><br>
+          <span data-i18n="small_lastRun">Последний запуск:</span> <span id="lastRun">Никогда</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Настройки -->
+    <div id="settings-tab" class="tab-content">
+      <div class="header" data-i18n="header_settings">⚙ Настройки</div>
+      
+      <div class="input-group">
+        <label data-i18n="label_language">Язык:</label>
+        <select id="languageSelect">
+          <option value="en" data-i18n="option_english">English</option>
+          <option value="ru" data-i18n="option_russian">Русский</option>
+          <option value="th" data-i18n="option_thai">ไทย</option>
+        </select>
+      </div>
+      
+      <div class="input-group">
+        <label data-i18n="label_saveFolder">Папка для сохранения:</label>
+        <input type="text" id="saveFolder" data-i18n-placeholder="placeholder_saveFolder" placeholder="cookies_exports" value="cookies_exports">
+        <div class="small-text" data-i18n="small_relativeDownloads">Относительно папки загрузок</div>
+      </div>
+      
+      <div class="input-group">
+        <label data-i18n="label_filenamePattern">Имя файла:</label>
+        <input type="text" id="filenamePattern" data-i18n-placeholder="placeholder_filenamePattern" placeholder="{date}_{time}_{domain}" value="{date}_{time}">
+        <div class="small-text">
+          <span data-i18n="small_availableVars">Доступные переменные: {date}, {time}, {domain}, {count}</span><br>
+          <span data-i18n="small_filenameExample">Пример: cookies_{date}_{time}.json</span>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <input type="checkbox" id="addTimestamp" checked>
+        <label for="addTimestamp" data-i18n="label_addTimestamp">Добавлять timestamp в файл</label>
+      </div>
+      
+      <div class="checkbox-group">
+        <input type="checkbox" id="compressFiles">
+        <label for="compressFiles" data-i18n="label_compressFiles">Сжимать файлы (gzip)</label>
+      </div>
+      
+      <div class="button-group">
+        <button id="saveAllSettings" data-i18n="btn_saveAllSettings">💾 Сохранить все настройки</button>
+        <button id="exportSettings" data-i18n="btn_exportSettings">📤 Экспорт настроек</button>
+        <button id="importSettings" data-i18n="btn_importSettings">📥 Импорт настроек</button>
+        <button id="resetAll" data-i18n="btn_reset">🔄 Сброс</button>
+      </div>
+    </div>
+    
+    <div id="statusMessage" class="status"></div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

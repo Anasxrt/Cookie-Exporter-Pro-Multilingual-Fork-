@@ -1,0 +1,376 @@
+{
+  "tab_manual": {
+    "message": "Ручной экспорт",
+    "description": "Tab label for manual export"
+  },
+  "tab_auto": {
+    "message": "Автоматизация",
+    "description": "Tab label for automation"
+  },
+  "tab_settings": {
+    "message": "Настройки",
+    "description": "Tab label for settings"
+  },
+  "header_manual": {
+    "message": "🔄 Ручной экспорт куки",
+    "description": "Header for manual export tab"
+  },
+  "label_domainFilter": {
+    "message": "Фильтр домена (опционально):",
+    "description": "Label for domain filter input"
+  },
+  "placeholder_domainFilter": {
+    "message": "example.com или оставьте пустым для всех",
+    "description": "Placeholder for domain filter"
+  },
+  "label_cookieType": {
+    "message": "Тип куки:",
+    "description": "Label for cookie type select"
+  },
+  "option_allCookies": {
+    "message": "Все куки",
+    "description": "Option for all cookies"
+  },
+  "option_sessionOnly": {
+    "message": "Только сессионные",
+    "description": "Option for session cookies only"
+  },
+  "option_persistentOnly": {
+    "message": "Только постоянные",
+    "description": "Option for persistent cookies only"
+  },
+  "label_exportFormat": {
+    "message": "Формат экспорта:",
+    "description": "Label for export format"
+  },
+  "small_netscapeCompat": {
+    "message": "Netscape формат совместим с wget, curl, aria2 и другими утилитами",
+    "description": "Small text about Netscape format compatibility"
+  },
+  "btn_getCookies": {
+    "message": "📥 Получить куки",
+    "description": "Button to get cookies"
+  },
+  "btn_copyToClipboard": {
+    "message": "📋 Копировать",
+    "description": "Button to copy to clipboard"
+  },
+  "btn_saveToFile": {
+    "message": "💾 Сохранить файл",
+    "description": "Button to save to file"
+  },
+  "btn_sendToServer": {
+    "message": "🌐 Отправить",
+    "description": "Button to send to server"
+  },
+  "label_result": {
+    "message": "Результат:",
+    "description": "Label for result area"
+  },
+  "small_foundCookies": {
+    "message": "Найдено куки:",
+    "description": "Label showing number of cookies found"
+  },
+  "header_auto": {
+    "message": "🤖 Автоматический экспорт",
+    "description": "Header for automation tab"
+  },
+  "label_enableAutoExport": {
+    "message": "Включить автоматический экспорт",
+    "description": "Label for enable auto export checkbox"
+  },
+  "label_trigger": {
+    "message": "Триггер:",
+    "description": "Label for trigger select"
+  },
+  "option_startup": {
+    "message": "При запуске браузера",
+    "description": "Option for startup trigger"
+  },
+  "option_browserClose": {
+    "message": "При закрытии браузера",
+    "description": "Option for browser close trigger"
+  },
+  "option_schedule": {
+    "message": "По расписанию",
+    "description": "Option for scheduled trigger"
+  },
+  "option_interval": {
+    "message": "Каждые N минут",
+    "description": "Option for interval trigger"
+  },
+  "label_scheduleTime": {
+    "message": "Время (каждый день):",
+    "description": "Label for schedule time"
+  },
+  "label_intervalMinutes": {
+    "message": "Интервал (минуты):",
+    "description": "Label for interval minutes"
+  },
+  "label_action": {
+    "message": "Действие:",
+    "description": "Label for action select"
+  },
+  "option_saveFile": {
+    "message": "Сохранить в файл",
+    "description": "Option for save action"
+  },
+  "option_sendServer": {
+    "message": "Отправить на сервер",
+    "description": "Option for send action"
+  },
+  "option_saveAndSend": {
+    "message": "Сохранить и отправить",
+    "description": "Option for both actions"
+  },
+  "label_format": {
+    "message": "Формат:",
+    "description": "Label for format radio group"
+  },
+  "label_serverUrl": {
+    "message": "URL сервера:",
+    "description": "Label for server URL input"
+  },
+  "placeholder_serverUrl": {
+    "message": "http://localhost:3000/cookies",
+    "description": "Placeholder for server URL"
+  },
+  "label_autoDomainFilter": {
+    "message": "Фильтр домена (авто):",
+    "description": "Label for auto domain filter"
+  },
+  "placeholder_autoDomainFilter": {
+    "message": "Оставьте пустым для всех",
+    "description": "Placeholder for auto domain filter"
+  },
+  "btn_saveAutoSettings": {
+    "message": "💾 Сохранить настройки",
+    "description": "Button to save auto settings"
+  },
+  "btn_testAutoExport": {
+    "message": "🧪 Тестовый запуск",
+    "description": "Button to test auto export"
+  },
+  "small_status": {
+    "message": "Статус:",
+    "description": "Label for status"
+  },
+  "small_lastRun": {
+    "message": "Последний запуск:",
+    "description": "Label for last run time"
+  },
+  "status_inactive": {
+    "message": "Не активно",
+    "description": "Status when auto export is inactive"
+  },
+  "status_never": {
+    "message": "Никогда",
+    "description": "When never run"
+  },
+  "status_success": {
+    "message": "Успешно",
+    "description": "Status when successful"
+  },
+  "status_error": {
+    "message": "Ошибка",
+    "description": "Status when error"
+  },
+  "header_settings": {
+    "message": "⚙ Настройки",
+    "description": "Header for settings tab"
+  },
+  "label_saveFolder": {
+    "message": "Папка для сохранения:",
+    "description": "Label for save folder input"
+  },
+  "placeholder_saveFolder": {
+    "message": "cookies_exports",
+    "description": "Placeholder for save folder"
+  },
+  "small_relativeDownloads": {
+    "message": "Относительно папки загрузок",
+    "description": "Small text about save folder"
+  },
+  "label_filenamePattern": {
+    "message": "Имя файла:",
+    "description": "Label for filename pattern"
+  },
+  "placeholder_filenamePattern": {
+    "message": "{date}_{time}_{domain}",
+    "description": "Placeholder for filename pattern"
+  },
+  "small_availableVars": {
+    "message": "Доступные переменные: {date}, {time}, {domain}, {count}",
+    "description": "Small text showing available variables"
+  },
+  "small_filenameExample": {
+    "message": "Пример: cookies_{date}_{time}.json",
+    "description": "Small text showing filename example"
+  },
+  "label_addTimestamp": {
+    "message": "Добавлять timestamp в файл",
+    "description": "Label for add timestamp checkbox"
+  },
+  "label_compressFiles": {
+    "message": "Сжимать файлы (gzip)",
+    "description": "Label for compress files checkbox"
+  },
+  "btn_saveAllSettings": {
+    "message": "💾 Сохранить все настройки",
+    "description": "Button to save all settings"
+  },
+  "btn_exportSettings": {
+    "message": "📤 Экспорт настроек",
+    "description": "Button to export settings"
+  },
+  "btn_importSettings": {
+    "message": "📥 Импорт настроек",
+    "description": "Button to import settings"
+  },
+  "btn_reset": {
+    "message": "🔄 Сброс",
+    "description": "Button to reset all settings"
+  },
+  "label_language": {
+    "message": "Язык:",
+    "description": "Label for language selector"
+  },
+  "option_english": {
+    "message": "English",
+    "description": "English language option"
+  },
+  "option_russian": {
+    "message": "Русский",
+    "description": "Russian language option"
+  },
+  "option_thai": {
+    "message": "ไทย",
+    "description": "Thai language option"
+  },
+  "status_settingsLoaded": {
+    "message": "Настройки загружены",
+    "description": "Status message when settings are loaded"
+  },
+  "status_gettingCookies": {
+    "message": "Получение куки...",
+    "description": "Status message when getting cookies"
+  },
+  "status_cookiesReceived": {
+    "message": "Получено $count$ куки",
+    "description": "Status message when cookies received",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "status_copied": {
+    "message": "Скопировано в буфер обмена",
+    "description": "Status message when copied to clipboard"
+  },
+  "status_saveError": {
+    "message": "Ошибка сохранения: $error$",
+    "description": "Status message when save error",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "File not found"
+      }
+    }
+  },
+  "status_fileSaved": {
+    "message": "Файл сохранен: $filename$",
+    "description": "Status message when file saved",
+    "placeholders": {
+      "filename": {
+        "content": "$1",
+        "example": "cookies_2024-01-01.json"
+      }
+    }
+  },
+  "status_sendingToServer": {
+    "message": "Отправка на сервер...",
+    "description": "Status message when sending to server"
+  },
+  "status_sentToServer": {
+    "message": "Данные отправлены на сервер",
+    "description": "Status message when data sent to server"
+  },
+  "status_serverError": {
+    "message": "Ошибка сервера: $status$",
+    "description": "Status message when server error",
+    "placeholders": {
+      "status": {
+        "content": "$1",
+        "example": "500"
+      }
+    }
+  },
+  "status_sendError": {
+    "message": "Ошибка отправки: $error$",
+    "description": "Status message when send error",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Network error"
+      }
+    }
+  },
+  "status_autoSettingsSaved": {
+    "message": "Настройки автоматизации сохранены",
+    "description": "Status message when auto settings saved"
+  },
+  "status_testRun": {
+    "message": "Тестовый запуск...",
+    "description": "Status message when test run"
+  },
+  "status_testSuccess": {
+    "message": "Тест выполнен успешно",
+    "description": "Status message when test succeeded"
+  },
+  "status_allSettingsSaved": {
+    "message": "Все настройки сохранены",
+    "description": "Status message when all settings saved"
+  },
+  "status_settingsExported": {
+    "message": "Настройки экспортированы",
+    "description": "Status message when settings exported"
+  },
+  "status_settingsImported": {
+    "message": "Настройки импортированы",
+    "description": "Status message when settings imported"
+  },
+  "status_resetConfirmed": {
+    "message": "Все настройки сброшены",
+    "description": "Status message when settings reset"
+  },
+  "confirm_resetAll": {
+    "message": "Вы уверены? Все настройки будут сброшены.",
+    "description": "Confirm dialog for reset all"
+  },
+  "error_loadSettings": {
+    "message": "Ошибка загрузки настроек",
+    "description": "Error message when loading settings"
+  },
+  "error_copy": {
+    "message": "Ошибка копирования: $error$",
+    "description": "Error message when copying",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Clipboard access denied"
+      }
+    }
+  },
+  "error_import": {
+    "message": "Ошибка импорта: $error$",
+    "description": "Error message when importing",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Invalid JSON"
+      }
+    }
+  }
+}

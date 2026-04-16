@@ -1,0 +1,488 @@
+{
+  "tab_manual": {
+    "message": "ส่งออกด้วยตนเอง",
+    "description": "Tab label for manual export"
+  },
+  "tab_auto": {
+    "message": "ระบบอัตโนมัติ",
+    "description": "Tab label for automation"
+  },
+  "tab_settings": {
+    "message": "การตั้งค่า",
+    "description": "Tab label for settings"
+  },
+  "header_manual": {
+    "message": "🔄 ส่งออกคุกกี้ด้วยตนเอง",
+    "description": "Header for manual export tab"
+  },
+  "label_domainFilter": {
+    "message": "ตัวกรองโดเมน (ไม่บังคับ):",
+    "description": "Label for domain filter input"
+  },
+  "placeholder_domainFilter": {
+    "message": "example.com หรือเว้นว่างเพื่อส่งออกทั้งหมด",
+    "description": "Placeholder for domain filter"
+  },
+  "label_cookieType": {
+    "message": "ประเภทคุกกี้:",
+    "description": "Label for cookie type select"
+  },
+  "option_allCookies": {
+    "message": "คุกกี้ทั้งหมด",
+    "description": "Option for all cookies"
+  },
+  "option_sessionOnly": {
+    "message": "เฉพาะเซสชัน",
+    "description": "Option for session cookies only"
+  },
+  "option_persistentOnly": {
+    "message": "เฉพาะถาวร",
+    "description": "Option for persistent cookies only"
+  },
+  "label_exportFormat": {
+    "message": "รูปแบบการส่งออก:",
+    "description": "Label for export format"
+  },
+  "small_netscapeCompat": {
+    "message": "รูปแบบ Netscape ใช้ได้กับ wget, curl, aria2 และโปรแกรมอื่นๆ",
+    "description": "Small text about Netscape format compatibility"
+  },
+  "btn_getCookies": {
+    "message": "📥 รับคุกกี้",
+    "description": "Button to get cookies"
+  },
+  "btn_copyToClipboard": {
+    "message": "📋 คัดลอก",
+    "description": "Button to copy to clipboard"
+  },
+  "btn_saveToFile": {
+    "message": "💾 บันทึกไฟล์",
+    "description": "Button to save to file"
+  },
+  "btn_sendToServer": {
+    "message": "🌐 ส่ง",
+    "description": "Button to send to server"
+  },
+  "label_result": {
+    "message": "ผลลัพธ์:",
+    "description": "Label for result area"
+  },
+  "small_foundCookies": {
+    "message": "พบคุกกี้:",
+    "description": "Label showing number of cookies found"
+  },
+  "header_auto": {
+    "message": "🤖 ส่งออกอัตโนมัติ",
+    "description": "Header for automation tab"
+  },
+  "label_enableAutoExport": {
+    "message": "เปิดใช้งานการส่งออกอัตโนมัติ",
+    "description": "Label for enable auto export checkbox"
+  },
+  "label_trigger": {
+    "message": "ทริกเกอร์:",
+    "description": "Label for trigger select"
+  },
+  "option_startup": {
+    "message": "เมื่อเปิดเบราว์เซอร์",
+    "description": "Option for startup trigger"
+  },
+  "option_browserClose": {
+    "message": "เมื่อปิดเบราว์เซอร์",
+    "description": "Option for browser close trigger"
+  },
+  "option_schedule": {
+    "message": "ตามกำหนดเวลา",
+    "description": "Option for scheduled trigger"
+  },
+  "option_interval": {
+    "message": "ทุก N นาที",
+    "description": "Option for interval trigger"
+  },
+  "label_scheduleTime": {
+    "message": "เวลา (ทุกวัน):",
+    "description": "Label for schedule time"
+  },
+  "label_intervalMinutes": {
+    "message": "ช่วงเวลา (นาที):",
+    "description": "Label for interval minutes"
+  },
+  "label_action": {
+    "message": "การดำเนินการ:",
+    "description": "Label for action select"
+  },
+  "option_saveFile": {
+    "message": "บันทึกเป็นไฟล์",
+    "description": "Option for save action"
+  },
+  "option_sendServer": {
+    "message": "ส่งไปยังเซิร์ฟเวอร์",
+    "description": "Option for send action"
+  },
+  "option_saveAndSend": {
+    "message": "บันทึกและส่ง",
+    "description": "Option for both actions"
+  },
+  "label_format": {
+    "message": "รูปแบบ:",
+    "description": "Label for format radio group"
+  },
+  "label_serverUrl": {
+    "message": "URL เซิร์ฟเวอร์:",
+    "description": "Label for server URL input"
+  },
+  "placeholder_serverUrl": {
+    "message": "http://localhost:3000/cookies",
+    "description": "Placeholder for server URL"
+  },
+  "label_autoDomainFilter": {
+    "message": "ตัวกรองโดเมน (อัตโนมัติ):",
+    "description": "Label for auto domain filter"
+  },
+  "placeholder_autoDomainFilter": {
+    "message": "เว้นว่างเพื่อส่งออกทั้งหมด",
+    "description": "Placeholder for auto domain filter"
+  },
+  "btn_saveAutoSettings": {
+    "message": "💾 บันทึกการตั้งค่า",
+    "description": "Button to save auto settings"
+  },
+  "btn_testAutoExport": {
+    "message": "🧪 ทดสอบ",
+    "description": "Button to test auto export"
+  },
+  "small_status": {
+    "message": "สถานะ:",
+    "description": "Label for status"
+  },
+  "small_lastRun": {
+    "message": "รันล่าสุด:",
+    "description": "Label for last run time"
+  },
+  "status_inactive": {
+    "message": "ไม่ทำงาน",
+    "description": "Status when auto export is inactive"
+  },
+  "status_never": {
+    "message": "ไม่เคย",
+    "description": "When never run"
+  },
+  "status_success": {
+    "message": "สำเร็จ",
+    "description": "Status when successful"
+  },
+  "status_error": {
+    "message": "ข้อผิดพลาด",
+    "description": "Status when error"
+  },
+  "header_settings": {
+    "message": "⚙ การตั้งค่า",
+    "description": "Header for settings tab"
+  },
+  "label_saveFolder": {
+    "message": "โฟลเดอร์สำหรับบันทึก:",
+    "description": "Label for save folder input"
+  },
+  "placeholder_saveFolder": {
+    "message": "cookies_exports",
+    "description": "Placeholder for save folder"
+  },
+  "small_relativeDownloads": {
+    "message": "สัมพันธ์กับโฟลเดอร์ดาวน์โหลด",
+    "description": "Small text about save folder"
+  },
+  "label_filenamePattern": {
+    "message": "ชื่อไฟล์:",
+    "description": "Label for filename pattern"
+  },
+  "placeholder_filenamePattern": {
+    "message": "{date}_{time}_{domain}",
+    "description": "Placeholder for filename pattern"
+  },
+  "small_availableVars": {
+    "message": "ตัวแปรที่ใช้ได้: {date}, {time}, {domain}, {count}",
+    "description": "Small text showing available variables"
+  },
+  "small_filenameExample": {
+    "message": "ตัวอย่าง: cookies_{date}_{time}.json",
+    "description": "Small text showing filename example"
+  },
+  "label_addTimestamp": {
+    "message": "เพิ่ม timestamp ลงในไฟล์",
+    "description": "Label for add timestamp checkbox"
+  },
+  "label_compressFiles": {
+    "message": "บีบอัดไฟล์ (gzip)",
+    "description": "Label for compress files checkbox"
+  },
+  "btn_saveAllSettings": {
+    "message": "💾 บันทึกการตั้งค่าทั้งหมด",
+    "description": "Button to save all settings"
+  },
+  "btn_exportSettings": {
+    "message": "📤 ส่งออกการตั้งค่า",
+    "description": "Button to export settings"
+  },
+  "btn_importSettings": {
+    "message": "📥 นำเข้าการตั้งค่า",
+    "description": "Button to import settings"
+  },
+  "btn_reset": {
+    "message": "🔄 รีเซ็ต",
+    "description": "Button to reset all settings"
+  },
+  "label_language": {
+    "message": "ภาษา:",
+    "description": "Label for language selector"
+  },
+  "option_english": {
+    "message": "English",
+    "description": "English language option"
+  },
+  "option_russian": {
+    "message": "Русский",
+    "description": "Russian language option"
+  },
+  "option_thai": {
+    "message": "ไทย",
+    "description": "Thai language option"
+  },
+  "status_settingsLoaded": {
+    "message": "โหลดการตั้งค่าแล้ว",
+    "description": "Status message when settings are loaded"
+  },
+  "status_gettingCookies": {
+    "message": "กำลังรับคุกกี้...",
+    "description": "Status message when getting cookies"
+  },
+  "status_cookiesReceived": {
+    "message": "ได้รับคุกกี้ $count$ ชิ้น",
+    "description": "Status message when cookies received",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "status_copied": {
+    "message": "คัดลอกไปยังคลิปบอร์ดแล้ว",
+    "description": "Status message when copied to clipboard"
+  },
+  "status_saveError": {
+    "message": "ข้อผิดพลาดในการบันทึก: $error$",
+    "description": "Status message when save error",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "File not found"
+      }
+    }
+  },
+  "status_fileSaved": {
+    "message": "บันทึกไฟล์แล้ว: $filename$",
+    "description": "Status message when file saved",
+    "placeholders": {
+      "filename": {
+        "content": "$1",
+        "example": "cookies_2024-01-01.json"
+      }
+    }
+  },
+  "status_sendingToServer": {
+    "message": "กำลังส่งไปยังเซิร์ฟเวอร์...",
+    "description": "Status message when sending to server"
+  },
+  "status_sentToServer": {
+    "message": "ส่งข้อมูลไปยังเซิร์ฟเวอร์แล้ว",
+    "description": "Status message when data sent to server"
+  },
+  "status_serverError": {
+    "message": "ข้อผิดพลาดของเซิร์ฟเวอร์: $status$",
+    "description": "Status message when server error",
+    "placeholders": {
+      "status": {
+        "content": "$1",
+        "example": "500"
+      }
+    }
+  },
+  "status_sendError": {
+    "message": "ข้อผิดพลาดในการส่ง: $error$",
+    "description": "Status message when send error",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Network error"
+      }
+    }
+  },
+  "status_autoSettingsSaved": {
+    "message": "บันทึกการตั้งค่าระบบอัตโนมัติแล้ว",
+    "description": "Status message when auto settings saved"
+  },
+  "status_testRun": {
+    "message": "กำลังทดสอบ...",
+    "description": "Status message when test run"
+  },
+  "status_testSuccess": {
+    "message": "ทดสอบสำเร็จ",
+    "description": "Status message when test succeeded"
+  },
+  "status_allSettingsSaved": {
+    "message": "บันทึกการตั้งค่าทั้งหมดแล้ว",
+    "description": "Status message when all settings saved"
+  },
+  "status_settingsExported": {
+    "message": "ส่งออกการตั้งค่าแล้ว",
+    "description": "Status message when settings exported"
+  },
+  "status_settingsImported": {
+    "message": "นำเข้าการตั้งค่าแล้ว",
+    "description": "Status message when settings imported"
+  },
+  "status_resetConfirmed": {
+    "message": "รีเซ็ตการตั้งค่าทั้งหมดแล้ว",
+    "description": "Status message when settings reset"
+  },
+  "confirm_resetAll": {
+    "message": "คุณแน่ใจหรือไม่? การตั้งค่าทั้งหมดจะถูกรีเซ็ต",
+    "description": "Confirm dialog for reset all"
+  },
+  "error_loadSettings": {
+    "message": "ข้อผิดพลาดในการโหลดการตั้งค่า",
+    "description": "Error message when loading settings"
+  },
+  "error_copy": {
+    "message": "ข้อผิดพลาดในการคัดลอก: $error$",
+    "description": "Error message when copying",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Clipboard access denied"
+      }
+    }
+  },
+  "error_import": {
+    "message": "ข้อผิดพลาดในการนำเข้า: $error$",
+    "description": "Error message when importing",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Invalid JSON"
+      }
+    }
+  },
+  "tab_quick": {
+    "message": "⚡ ด่วน",
+    "description": "Tab label for quick/clipboard mode"
+  },
+  "header_quick": {
+    "message": "⚡ ส่งออก/นำเข้าด่วน",
+    "description": "Header for quick tab"
+  },
+  "label_quickDomain": {
+    "message": "ตัวกรองโดเมน (ไม่บังคับ):",
+    "description": "Label for quick domain filter"
+  },
+  "placeholder_quickDomain": {
+    "message": "เว้นว่างเพื่อส่งออกทั้งหมด",
+    "description": "Placeholder for quick domain filter"
+  },
+  "format_json": {
+    "message": "JSON",
+    "description": "JSON format option"
+  },
+  "format_netscape": {
+    "message": "Netscape",
+    "description": "Netscape format option"
+  },
+  "format_curl": {
+    "message": "cURL",
+    "description": "cURL format option"
+  },
+  "btn_getAndCopy": {
+    "message": "📋 รับและคัดลอก",
+    "description": "Button to get and copy cookies"
+  },
+  "btn_copyJson": {
+    "message": "📄 คัดลอก JSON",
+    "description": "Button to copy as JSON"
+  },
+  "btn_copyNetscape": {
+    "message": "📜 คัดลอก Netscape",
+    "description": "Button to copy as Netscape"
+  },
+  "header_import": {
+    "message": "📥 นำเข้าจากคลิปบอร์ด",
+    "description": "Header for import section"
+  },
+  "btn_importClipboard": {
+    "message": "📥 นำเข้าคุกกี้จากคลิปบอร์ด",
+    "description": "Button to import from clipboard"
+  },
+  "label_clipboardWatch": {
+    "message": "ตรวจจับอัตโนมัติเมื่อวาง",
+    "description": "Label for clipboard watch toggle"
+  },
+  "label_importMode": {
+    "message": "โหมดนำเข้า:",
+    "description": "Label for import mode"
+  },
+  "option_merge": {
+    "message": "รวม (เก็บคุกกี้เดิม)",
+    "description": "Merge import mode"
+  },
+  "option_replace": {
+    "message": "แทนที่ (ล้างก่อน)",
+    "description": "Replace import mode"
+  },
+  "option_update": {
+    "message": "อัปเดต (เขียนทับซ้ำ)",
+    "description": "Update import mode"
+  },
+  "label_preview": {
+    "message": "ตัวอย่าง:",
+    "description": "Label for preview area"
+  },
+  "small_quickCopied": {
+    "message": "คัดลอกแล้ว! พร้อมสำหรับ CLI/AI",
+    "description": "Success message for quick copy"
+  },
+  "status_copied_to_clipboard": {
+    "message": "คัดลอก $count$ คุกกี้ไปยังคลิปบอร์ด!",
+    "description": "Status when cookies copied to clipboard",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "error_no_cookies": {
+    "message": "ไม่มีคุกกี้ให้คัดลอก ต้องรับคุกกี้ก่อน",
+    "description": "Error when no cookies available"
+  },
+  "error_invalid_format": {
+    "message": "รูปแบบคุกกี้ในคลิปบอร์ดไม่ถูกต้อง",
+    "description": "Error when clipboard has invalid format"
+  },
+  "error_no_cookies_found": {
+    "message": "ไม่พบคุกกี้ในคลิปบอร์ด",
+    "description": "Error when no cookies parsed"
+  },
+  "status_imported": {
+    "message": "นำเข้า $count$ คุกกี้!",
+    "description": "Status when cookies imported",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "status_clipboard_detected": {
+    "message": "พบข้อมูลคุกกี้ในคลิปบอร์ด! ไปที่แท็บด่วนเพื่อนำเข้า",
+    "description": "Notification when clipboard has cookies"
+  }
+}

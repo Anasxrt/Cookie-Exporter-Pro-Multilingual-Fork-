@@ -1,0 +1,53 @@
+{
+  "manifest_version": 2,
+  "default_locale": "en",
+  "name": "Cookie Exporter Pro+",
+  "version": "1.3",
+  "description": "Export cookies with format selection and automation - Multilingual (EN/RU/TH)",
+  "short_name": "Cookie Export",
+  "author": "Cookie Exporter Pro+ Contributors",
+  "homepage_url": "https://github.com/cookie-exporter-pro",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "cookie-exporter-pro@yourdomain.com",
+      "strict_min_version": "78.0",
+      "update_url": "https://example.com/updates.json"
+    }
+  },
+  "permissions": [
+    "cookies",
+    "<all_urls>",
+    "storage",
+    "alarms",
+    "downloads"
+  ],
+  "optional_permissions": [
+    "activeTab"
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon-32.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    },
+    "default_title": "Cookie Exporter Pro+"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon-32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "web_accessible_resources": [],
+  "secure_prefs": {
+    "browser.sanitizeOnShutdown": false
+  }
+}

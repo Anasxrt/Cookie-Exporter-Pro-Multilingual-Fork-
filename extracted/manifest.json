@@ -1,0 +1,41 @@
+{
+  "manifest_version": 2,
+  "default_locale": "en",
+  "name": "Cookie Exporter Pro+",
+  "version": "1.1",
+  "description": "Exporting cookies with format selection and automation",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "cookie-exporter-pro@yourdomain.com",
+      "strict_min_version": "78.0"
+    }
+  },
+  "permissions": [
+    "cookies",
+    "<all_urls>",
+    "storage",
+    "alarms",
+    "downloads"
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon-32.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon-32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

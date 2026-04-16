@@ -1,0 +1,488 @@
+{
+  "tab_manual": {
+    "message": "Manual Export",
+    "description": "Tab label for manual export"
+  },
+  "tab_auto": {
+    "message": "Automation",
+    "description": "Tab label for automation"
+  },
+  "tab_settings": {
+    "message": "Settings",
+    "description": "Tab label for settings"
+  },
+  "header_manual": {
+    "message": "🔄 Manual Cookie Export",
+    "description": "Header for manual export tab"
+  },
+  "label_domainFilter": {
+    "message": "Domain filter (optional):",
+    "description": "Label for domain filter input"
+  },
+  "placeholder_domainFilter": {
+    "message": "example.com or leave empty for all",
+    "description": "Placeholder for domain filter"
+  },
+  "label_cookieType": {
+    "message": "Cookie type:",
+    "description": "Label for cookie type select"
+  },
+  "option_allCookies": {
+    "message": "All cookies",
+    "description": "Option for all cookies"
+  },
+  "option_sessionOnly": {
+    "message": "Session only",
+    "description": "Option for session cookies only"
+  },
+  "option_persistentOnly": {
+    "message": "Persistent only",
+    "description": "Option for persistent cookies only"
+  },
+  "label_exportFormat": {
+    "message": "Export format:",
+    "description": "Label for export format"
+  },
+  "small_netscapeCompat": {
+    "message": "Netscape format compatible with wget, curl, aria2 and other utilities",
+    "description": "Small text about Netscape format compatibility"
+  },
+  "btn_getCookies": {
+    "message": "📥 Get Cookies",
+    "description": "Button to get cookies"
+  },
+  "btn_copyToClipboard": {
+    "message": "📋 Copy",
+    "description": "Button to copy to clipboard"
+  },
+  "btn_saveToFile": {
+    "message": "💾 Save File",
+    "description": "Button to save to file"
+  },
+  "btn_sendToServer": {
+    "message": "🌐 Send",
+    "description": "Button to send to server"
+  },
+  "label_result": {
+    "message": "Result:",
+    "description": "Label for result area"
+  },
+  "small_foundCookies": {
+    "message": "Cookies found:",
+    "description": "Label showing number of cookies found"
+  },
+  "header_auto": {
+    "message": "🤖 Automatic Export",
+    "description": "Header for automation tab"
+  },
+  "label_enableAutoExport": {
+    "message": "Enable automatic export",
+    "description": "Label for enable auto export checkbox"
+  },
+  "label_trigger": {
+    "message": "Trigger:",
+    "description": "Label for trigger select"
+  },
+  "option_startup": {
+    "message": "On browser startup",
+    "description": "Option for startup trigger"
+  },
+  "option_browserClose": {
+    "message": "On browser close",
+    "description": "Option for browser close trigger"
+  },
+  "option_schedule": {
+    "message": "By schedule",
+    "description": "Option for scheduled trigger"
+  },
+  "option_interval": {
+    "message": "Every N minutes",
+    "description": "Option for interval trigger"
+  },
+  "label_scheduleTime": {
+    "message": "Time (every day):",
+    "description": "Label for schedule time"
+  },
+  "label_intervalMinutes": {
+    "message": "Interval (minutes):",
+    "description": "Label for interval minutes"
+  },
+  "label_action": {
+    "message": "Action:",
+    "description": "Label for action select"
+  },
+  "option_saveFile": {
+    "message": "Save to file",
+    "description": "Option for save action"
+  },
+  "option_sendServer": {
+    "message": "Send to server",
+    "description": "Option for send action"
+  },
+  "option_saveAndSend": {
+    "message": "Save and send",
+    "description": "Option for both actions"
+  },
+  "label_format": {
+    "message": "Format:",
+    "description": "Label for format radio group"
+  },
+  "label_serverUrl": {
+    "message": "Server URL:",
+    "description": "Label for server URL input"
+  },
+  "placeholder_serverUrl": {
+    "message": "http://localhost:3000/cookies",
+    "description": "Placeholder for server URL"
+  },
+  "label_autoDomainFilter": {
+    "message": "Domain filter (auto):",
+    "description": "Label for auto domain filter"
+  },
+  "placeholder_autoDomainFilter": {
+    "message": "Leave empty for all",
+    "description": "Placeholder for auto domain filter"
+  },
+  "btn_saveAutoSettings": {
+    "message": "💾 Save Settings",
+    "description": "Button to save auto settings"
+  },
+  "btn_testAutoExport": {
+    "message": "🧪 Test Run",
+    "description": "Button to test auto export"
+  },
+  "small_status": {
+    "message": "Status:",
+    "description": "Label for status"
+  },
+  "small_lastRun": {
+    "message": "Last run:",
+    "description": "Label for last run time"
+  },
+  "status_inactive": {
+    "message": "Inactive",
+    "description": "Status when auto export is inactive"
+  },
+  "status_never": {
+    "message": "Never",
+    "description": "When never run"
+  },
+  "status_success": {
+    "message": "Success",
+    "description": "Status when successful"
+  },
+  "status_error": {
+    "message": "Error",
+    "description": "Status when error"
+  },
+  "header_settings": {
+    "message": "⚙ Settings",
+    "description": "Header for settings tab"
+  },
+  "label_saveFolder": {
+    "message": "Save folder:",
+    "description": "Label for save folder input"
+  },
+  "placeholder_saveFolder": {
+    "message": "cookies_exports",
+    "description": "Placeholder for save folder"
+  },
+  "small_relativeDownloads": {
+    "message": "Relative to downloads folder",
+    "description": "Small text about save folder"
+  },
+  "label_filenamePattern": {
+    "message": "Filename:",
+    "description": "Label for filename pattern"
+  },
+  "placeholder_filenamePattern": {
+    "message": "{date}_{time}_{domain}",
+    "description": "Placeholder for filename pattern"
+  },
+  "small_availableVars": {
+    "message": "Available variables: {date}, {time}, {domain}, {count}",
+    "description": "Small text showing available variables"
+  },
+  "small_filenameExample": {
+    "message": "Example: cookies_{date}_{time}.json",
+    "description": "Small text showing filename example"
+  },
+  "label_addTimestamp": {
+    "message": "Add timestamp to file",
+    "description": "Label for add timestamp checkbox"
+  },
+  "label_compressFiles": {
+    "message": "Compress files (gzip)",
+    "description": "Label for compress files checkbox"
+  },
+  "btn_saveAllSettings": {
+    "message": "💾 Save All Settings",
+    "description": "Button to save all settings"
+  },
+  "btn_exportSettings": {
+    "message": "📤 Export Settings",
+    "description": "Button to export settings"
+  },
+  "btn_importSettings": {
+    "message": "📥 Import Settings",
+    "description": "Button to import settings"
+  },
+  "btn_reset": {
+    "message": "🔄 Reset",
+    "description": "Button to reset all settings"
+  },
+  "label_language": {
+    "message": "Language:",
+    "description": "Label for language selector"
+  },
+  "option_english": {
+    "message": "English",
+    "description": "English language option"
+  },
+  "option_russian": {
+    "message": "Русский",
+    "description": "Russian language option"
+  },
+  "option_thai": {
+    "message": "ไทย",
+    "description": "Thai language option"
+  },
+  "status_settingsLoaded": {
+    "message": "Settings loaded",
+    "description": "Status message when settings are loaded"
+  },
+  "status_gettingCookies": {
+    "message": "Getting cookies...",
+    "description": "Status message when getting cookies"
+  },
+  "status_cookiesReceived": {
+    "message": "Received $count$ cookies",
+    "description": "Status message when cookies received",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "status_copied": {
+    "message": "Copied to clipboard",
+    "description": "Status message when copied to clipboard"
+  },
+  "status_saveError": {
+    "message": "Error saving: $error$",
+    "description": "Status message when save error",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "File not found"
+      }
+    }
+  },
+  "status_fileSaved": {
+    "message": "File saved: $filename$",
+    "description": "Status message when file saved",
+    "placeholders": {
+      "filename": {
+        "content": "$1",
+        "example": "cookies_2024-01-01.json"
+      }
+    }
+  },
+  "status_sendingToServer": {
+    "message": "Sending to server...",
+    "description": "Status message when sending to server"
+  },
+  "status_sentToServer": {
+    "message": "Data sent to server",
+    "description": "Status message when data sent to server"
+  },
+  "status_serverError": {
+    "message": "Server error: $status$",
+    "description": "Status message when server error",
+    "placeholders": {
+      "status": {
+        "content": "$1",
+        "example": "500"
+      }
+    }
+  },
+  "status_sendError": {
+    "message": "Error sending: $error$",
+    "description": "Status message when send error",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Network error"
+      }
+    }
+  },
+  "status_autoSettingsSaved": {
+    "message": "Automation settings saved",
+    "description": "Status message when auto settings saved"
+  },
+  "status_testRun": {
+    "message": "Test run...",
+    "description": "Status message when test run"
+  },
+  "status_testSuccess": {
+    "message": "Test executed successfully",
+    "description": "Status message when test succeeded"
+  },
+  "status_allSettingsSaved": {
+    "message": "All settings saved",
+    "description": "Status message when all settings saved"
+  },
+  "status_settingsExported": {
+    "message": "Settings exported",
+    "description": "Status message when settings exported"
+  },
+  "status_settingsImported": {
+    "message": "Settings imported",
+    "description": "Status message when settings imported"
+  },
+  "status_resetConfirmed": {
+    "message": "All settings reset",
+    "description": "Status message when settings reset"
+  },
+  "confirm_resetAll": {
+    "message": "Are you sure? All settings will be reset.",
+    "description": "Confirm dialog for reset all"
+  },
+  "error_loadSettings": {
+    "message": "Error loading settings",
+    "description": "Error message when loading settings"
+  },
+  "error_copy": {
+    "message": "Error copying: $error$",
+    "description": "Error message when copying",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Clipboard access denied"
+      }
+    }
+  },
+  "error_import": {
+    "message": "Import error: $error$",
+    "description": "Error message when importing",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Invalid JSON"
+      }
+    }
+  },
+  "tab_quick": {
+    "message": "⚡ Quick",
+    "description": "Tab label for quick/clipboard mode"
+  },
+  "header_quick": {
+    "message": "⚡ Quick Export / Import",
+    "description": "Header for quick tab"
+  },
+  "label_quickDomain": {
+    "message": "Domain filter (optional):",
+    "description": "Label for quick domain filter"
+  },
+  "placeholder_quickDomain": {
+    "message": "Leave empty for all",
+    "description": "Placeholder for quick domain filter"
+  },
+  "format_json": {
+    "message": "JSON",
+    "description": "JSON format option"
+  },
+  "format_netscape": {
+    "message": "Netscape",
+    "description": "Netscape format option"
+  },
+  "format_curl": {
+    "message": "cURL",
+    "description": "cURL format option"
+  },
+  "btn_getAndCopy": {
+    "message": "📋 Get & Copy to Clipboard",
+    "description": "Button to get and copy cookies"
+  },
+  "btn_copyJson": {
+    "message": "📄 Copy JSON",
+    "description": "Button to copy as JSON"
+  },
+  "btn_copyNetscape": {
+    "message": "📜 Copy Netscape",
+    "description": "Button to copy as Netscape"
+  },
+  "header_import": {
+    "message": "📥 Import from Clipboard",
+    "description": "Header for import section"
+  },
+  "btn_importClipboard": {
+    "message": "📥 Import Cookies from Clipboard",
+    "description": "Button to import from clipboard"
+  },
+  "label_clipboardWatch": {
+    "message": "Auto-detect & import on paste",
+    "description": "Label for clipboard watch toggle"
+  },
+  "label_importMode": {
+    "message": "Import mode:",
+    "description": "Label for import mode"
+  },
+  "option_merge": {
+    "message": "Merge (keep existing)",
+    "description": "Merge import mode"
+  },
+  "option_replace": {
+    "message": "Replace (clear first)",
+    "description": "Replace import mode"
+  },
+  "option_update": {
+    "message": "Update (overwrite duplicates)",
+    "description": "Update import mode"
+  },
+  "label_preview": {
+    "message": "Preview:",
+    "description": "Label for preview area"
+  },
+  "small_quickCopied": {
+    "message": "Copied! Ready for CLI/AI tools",
+    "description": "Success message for quick copy"
+  },
+  "status_copied_to_clipboard": {
+    "message": "Copied $count$ cookies to clipboard!",
+    "description": "Status when cookies copied to clipboard",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "error_no_cookies": {
+    "message": "No cookies to copy. Get cookies first.",
+    "description": "Error when no cookies available"
+  },
+  "error_invalid_format": {
+    "message": "Invalid cookie format in clipboard",
+    "description": "Error when clipboard has invalid format"
+  },
+  "error_no_cookies_found": {
+    "message": "No cookies found in clipboard data",
+    "description": "Error when no cookies parsed"
+  },
+  "status_imported": {
+    "message": "Imported $count$ cookies!",
+    "description": "Status when cookies imported",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "status_clipboard_detected": {
+    "message": "Cookie data detected in clipboard! Go to Quick tab to import.",
+    "description": "Notification when clipboard has cookies"
+  }
+}

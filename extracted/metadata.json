@@ -1,0 +1,17 @@
+{
+    "version": {
+      "license": "MPL-2.0"
+    },
+    "categories": {
+      "firefox": ["privacy-security", "web-development"]
+    },
+    "summary": {
+      "en-US": "Export browser cookies in JSON or Netscape format for backup, transfer, or automation workflows."
+    },
+    "homepage": {
+      "en-US": "https://example.com/cookie-exporter"
+    },
+    "support_email": {
+      "en-US": "support@example.com"
+    }
+  }

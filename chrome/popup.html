@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 450px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .header {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #333;
+    }
+    .section {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 8px;
+      background: #f9f9f9;
+    }
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+    label {
+      font-size: 13px;
+      color: #555;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+    .radio-group {
+      display: flex;
+      gap: 15px;
+      margin: 8px 0;
+    }
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: normal;
+    }
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 8px 0;
+    }
+    .button-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: bold;
+      transition: background-color 0.2s;
+    }
+    #getCookies {
+      background-color: #4CAF50;
+      color: white;
+      grid-column: span 2;
+    }
+    /* Quick action buttons */
+    .quick-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      font-size: 14px;
+      min-height: 60px;
+    }
+    .quick-btn .icon {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+    .quick-btn.primary {
+      background-color: #2196F3;
+      color: white;
+    }
+    .quick-btn.success {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .quick-btn.warning {
+      background-color: #FF9800;
+      color: white;
+    }
+    .quick-btn.info {
+      background-color: #9C27B0;
+      color: white;
+    }
+    #getCookiesQuick {
+      grid-column: span 2;
+      background-color: #4CAF50;
+      color: white;
+    }
+    /* Format selector for quick */
+    .quick-format {
+      display: flex;
+      gap: 10px;
+      margin: 10px 0;
+    }
+    .quick-format select {
+      flex: 1;
+    }
+    /* Clipboard watch toggle */
+    .clipboard-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px;
+      background: #e3f2fd;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+    .clipboard-toggle input {
+      width: 18px;
+      height: 18px;
+    }
+    .clipboard-toggle label {
+      flex: 1;
+      font-weight: normal;
+    }
+    /* Quick result */
+    .quick-result {
+      margin-top: 10px;
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      max-height: 150px;
+      overflow: auto;
+    }
+    .quick-result pre {
+      margin: 0;
+      font-size: 11px;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .hidden {
+      display: none !important;
+    }
+    .status {
+      margin-top: 10px;
+      padding: 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      display: none;
+    }
+    .success {
+      background-color: #dff0d8;
+      color: #3c763d;
+      border: 1px solid #d6e9c6;
+    }
+    .error {
+      background-color: #f2dede;
+      color: #a94442;
+      border: 1px solid #ebccd1;
+    }
+    .info {
+      background-color: #d9edf7;
+      color: #31708f;
+      border: 1px solid #bce8f1;
+    }
+    .small-text {
+      font-size: 11px;
+      color: #777;
+      margin-top: 3px;
+    }
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 15px;
+    }
+    .tab {
+      padding: 8px 15px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-bottom: none;
+      border-radius: 4px 4px 0 0;
+    }
+    .tab.active {
+      background: #f0f0f0;
+      border-color: #ddd #ddd #f0f0f0;
+      font-weight: bold;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="tabs">
+      <div class="tab" data-tab="quick" data-i18n="tab_quick">⚡ Quick</div>
+      <div class="tab active" data-tab="manual" data-i18n="tab_manual">Manual</div>
+      <div class="tab" data-tab="auto" data-i18n="tab_auto">Auto</div>
+      <div class="tab" data-tab="settings" data-i18n="tab_settings">Settings</div>
+    </div>
+    
+    <!-- Quick / Clipboard Mode -->
+    <div id="quick-tab" class="tab-content">
+      <div class="header" data-i18n="header_quick">⚡ Quick Export / Import</div>
+      
+      <!-- Quick Get & Copy -->
+      <div class="input-group">
+        <label data-i18n="label_quickDomain">Domain filter (optional):</label>
+        <input type="text" id="quickDomainFilter" data-i18n-placeholder="placeholder_quickDomain" placeholder="Leave empty for all">
+      </div>
+      
+      <div class="quick-format">
+        <select id="quickFormat">
+          <option value="json" data-i18n="format_json">JSON</option>
+          <option value="netscape" data-i18n="format_netscape">Netscape</option>
+          <option value="curl" data-i18n="format_curl">cURL</option>
+        </select>
+      </div>
+      
+      <div class="button-group">
+        <button id="getCookiesQuick" class="quick-btn primary" data-i18n="btn_getAndCopy">
+          <span class="icon">📋</span>
+          Get & Copy to Clipboard
+        </button>
+      </div>
+      
+      <!-- Quick Actions -->
+      <div class="button-group">
+        <button id="quickCopyJson" class="quick-btn success" data-i18n="btn_copyJson">
+          <span class="icon">📄</span>
+          Copy JSON
+        </button>
+        <button id="quickCopyNetscape" class="quick-btn info" data-i18n="btn_copyNetscape">
+          <span class="icon">📜</span>
+          Copy Netscape
+        </button>
+      </div>
+      
+      <!-- Import Section -->
+      <div class="section" style="margin-top: 15px;">
+        <div class="header" style="font-size: 14px;" data-i18n="header_import">📥 Import from Clipboard</div>
+        
+        <div class="button-group">
+          <button id="importFromClipboard" class="quick-btn warning" data-i18n="btn_importClipboard" style="grid-column: span 2;">
+            <span class="icon">📥</span>
+            Import Cookies from Clipboard
+          </button>
+        </div>
+        
+        <div class="clipboard-toggle">
+          <input type="checkbox" id="clipboardWatch" checked>
+          <label for="clipboardWatch" data-i18n="label_clipboardWatch">Auto-detect & import on paste</label>
+        </div>
+        
+        <div class="input-group" style="margin-top: 10px;">
+          <label data-i18n="label_importMode">Import mode:</label>
+          <select id="importMode">
+            <option value="merge" data-i18n="option_merge">Merge (keep existing)</option>
+            <option value="replace" data-i18n="option_replace">Replace (clear first)</option>
+            <option value="update" data-i18n="option_update">Update (overwrite duplicates)</option>
+          </select>
+        </div>
+      </div>
+      
+      <!-- Result Preview -->
+      <div id="quickResultArea" class="quick-result hidden">
+        <label data-i18n="label_preview">Preview:</label>
+        <pre id="quickResultText"></pre>
+        <div class="small-text" data-i18n="small_quickCopied">Copied! Ready for CLI/AI tools</div>
+      </div>
+    </div>
+    
+    <!-- Manual Export -->
+    <div id="manual-tab" class="tab-content active">
+      <div class="header" data-i18n="header_manual">🔄 Manual Cookie Export</div>
+      
+      <div class="input-group">
+        <label for="domainFilter" data-i18n="label_domainFilter">Domain filter (optional):</label>
+        <input type="text" id="domainFilter" data-i18n-placeholder="placeholder_domainFilter" placeholder="example.com or leave empty for all">
+      </div>
+      
+      <div class="input-group">
+        <label for="cookieType" data-i18n="label_cookieType">Cookie type:</label>
+        <select id="cookieType">
+          <option value="all" data-i18n="option_allCookies">All cookies</option>
+          <option value="session" data-i18n="option_sessionOnly">Session only</option>
+          <option value="persistent" data-i18n="option_persistentOnly">Persistent only</option>
+        </select>
+      </div>
+      
+      <div class="input-group">
+        <label data-i18n="label_exportFormat">Export format:</label>
+        <div class="radio-group">
+          <label><input type="radio" name="exportFormat" value="json" checked> JSON</label>
+          <label><input type="radio" name="exportFormat" value="netscape"> Netscape Cookie File</label>
+        </div>
+        <div class="small-text" data-i18n="small_netscapeCompat">
+          Netscape format compatible with wget, curl, aria2 and other utilities
+        </div>
+      </div>
+      
+      <div class="button-group">
+        <button id="getCookies" data-i18n="btn_getCookies">📥 Get Cookies</button>
+        <button id="copyToClipboard" data-i18n="btn_copyToClipboard" disabled>📋 Copy</button>
+        <button id="saveToFile" data-i18n="btn_saveToFile" disabled>💾 Save File</button>
+        <button id="sendToServer" data-i18n="btn_sendToServer" disabled>🌐 Send</button>
+      </div>
+      
+      <div id="resultArea" style="display: none;">
+        <label data-i18n="label_result">Result:</label>
+        <textarea id="resultText" readonly rows="8"></textarea>
+        <div class="small-text" data-i18n="small_foundCookies">Cookies found: <span id="cookieCount">0</span></div>
+      </div>
+    </div>
+    
+    <!-- Automation -->
+    <div id="auto-tab" class="tab-content">
+      <div class="header" data-i18n="header_auto">🤖 Automatic Export</div>
+      
+      <div class="checkbox-group">
+        <input type="checkbox" id="enableAutoExport">
+        <label for="enableAutoExport" data-i18n="label_enableAutoExport">Enable automatic export</label>
+      </div>
+      
+      <div id="autoSettings" class="hidden">
+        <div class="input-group">
+          <label data-i18n="label_trigger">Trigger:</label>
+          <select id="autoTrigger">
+            <option value="startup" data-i18n="option_startup">On browser startup</option>
+            <option value="browserClose" data-i18n="option_browserClose">On browser close</option>
+            <option value="schedule" data-i18n="option_schedule">By schedule</option>
+            <option value="interval" data-i18n="option_interval">Every N minutes</option>
+          </select>
+        </div>
+        
+        <div id="scheduleSettings" class="input-group hidden">
+          <label for="scheduleTime" data-i18n="label_scheduleTime">Time (every day):</label>
+          <input type="time" id="scheduleTime" value="09:00">
+        </div>
+        
+        <div id="intervalSettings" class="input-group hidden">
+          <label for="intervalMinutes" data-i18n="label_intervalMinutes">Interval (minutes):</label>
+          <input type="number" id="intervalMinutes" min="1" max="1440" value="60">
+        </div>
+        
+        <div class="input-group">
+          <label data-i18n="label_action">Action:</label>
+          <select id="autoAction">
+            <option value="save" data-i18n="option_saveFile">Save to file</option>
+            <option value="send" data-i18n="option_sendServer">Send to server</option>
+            <option value="both" data-i18n="option_saveAndSend">Save and send</option>
+          </select>
+        </div>
+        
+        <div class="input-group">
+          <label data-i18n="label_format">Format:</label>
+          <div class="radio-group">
+            <label><input type="radio" name="autoFormat" value="json" checked> JSON</label>
+            <label><input type="radio" name="autoFormat" value="netscape"> Netscape</label>
+          </div>
+        </div>
+        
+        <div id="serverSettings" class="input-group">
+          <label for="serverUrl" data-i18n="label_serverUrl">Server URL:</label>
+          <input type="text" id="serverUrl" data-i18n-placeholder="placeholder_serverUrl" placeholder="http://localhost:3000/cookies">
+        </div>
+        
+        <div class="input-group">
+          <label for="autoDomainFilter" data-i18n="label_autoDomainFilter">Domain filter (auto):</label>
+          <input type="text" id="autoDomainFilter" data-i18n-placeholder="placeholder_autoDomainFilter" placeholder="Leave empty for all">
+        </div>
+        
+        <div class="button-group">
+          <button id="saveAutoSettings" data-i18n="btn_saveAutoSettings">💾 Save Settings</button>
+          <button id="testAutoExport" data-i18n="btn_testAutoExport">🧪 Test Run</button>
+        </div>
+        
+        <div class="small-text">
+          <span data-i18n="small_status">Status:</span> <span id="autoStatus">Inactive</span><br>
+          <span data-i18n="small_lastRun">Last run:</span> <span id="lastRun">Never</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Settings -->
+    <div id="settings-tab" class="tab-content">
+      <div class="header" data-i18n="header_settings">⚙ Settings</div>
+      
+      <div class="input-group">
+        <label data-i18n="label_language">Language:</label>
+        <select id="languageSelect">
+          <option value="en" data-i18n="option_english">English</option>
+          <option value="ru" data-i18n="option_russian">Русский</option>
+          <option value="th" data-i18n="option_thai">ไทย</option>
+        </select>
+      </div>
+      
+      <div class="input-group">
+        <label data-i18n="label_saveFolder">Save folder:</label>
+        <input type="text" id="saveFolder" data-i18n-placeholder="placeholder_saveFolder" placeholder="cookies_exports" value="cookies_exports">
+        <div class="small-text" data-i18n="small_relativeDownloads">Relative to downloads folder</div>
+      </div>
+      
+      <div class="input-group">
+        <label data-i18n="label_filenamePattern">Filename:</label>
+        <input type="text" id="filenamePattern" data-i18n-placeholder="placeholder_filenamePattern" placeholder="{date}_{time}_{domain}" value="{date}_{time}">
+        <div class="small-text">
+          <span data-i18n="small_availableVars">Available variables: {date}, {time}, {domain}, {count}</span><br>
+          <span data-i18n="small_filenameExample">Example: cookies_{date}_{time}.json</span>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <input type="checkbox" id="addTimestamp" checked>
+        <label for="addTimestamp" data-i18n="label_addTimestamp">Add timestamp to file</label>
+      </div>
+      
+      <div class="checkbox-group">
+        <input type="checkbox" id="compressFiles">
+        <label for="compressFiles" data-i18n="label_compressFiles">Compress files (gzip)</label>
+      </div>
+      
+      <div class="button-group">
+        <button id="saveAllSettings" data-i18n="btn_saveAllSettings">💾 Save All Settings</button>
+        <button id="exportSettings" data-i18n="btn_exportSettings">📤 Export Settings</button>
+        <button id="importSettings" data-i18n="btn_importSettings">📥 Import Settings</button>
+        <button id="resetAll" data-i18n="btn_reset">🔄 Reset</button>
+      </div>
+    </div>
+    
+    <div id="statusMessage" class="status"></div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
