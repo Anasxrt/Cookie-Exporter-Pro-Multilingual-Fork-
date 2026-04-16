@@ -253,7 +253,7 @@ async function saveCookieFile(content, filename, mimeType) {
       saveAs: false,
       conflictAction: 'uniquify'
     });
-  finally {
+  } finally {
     // SECURITY: Always revoke object URL
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
